@@ -3,7 +3,7 @@
   vars:
    URL: play.example.com
    Project: example
-  - task:
-     name: Print URL
-     debug:
-       msg: URL = {{ URL }}
+  tasks:
+    - name: Print URL
+      debug:
+        msg: URL = {{ URL }}
