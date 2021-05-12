@@ -6,7 +6,7 @@
   vars_prompt:
     - name: URL
       prompt: Enter URL
-       private: no
+      privat: no
   vars_files:
    - example-vars.yml
   tasks:
