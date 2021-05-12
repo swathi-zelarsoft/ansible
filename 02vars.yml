@@ -31,7 +31,7 @@
 
     - name: set a fact
       set_fact:
-      Date: "{{out.std.out}}"
+       Date: "{{out.std.out}}"
 
     - name: print Date
       debug:
