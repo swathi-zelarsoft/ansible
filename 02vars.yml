@@ -3,10 +3,10 @@
   vars:
    URL: play.example.com
    Project: example
-  vars_prompt:
-    - name: URL
-      prompt: Enter URL
-      private: no
+ # vars_prompt:
+  #  - name: URL
+  #   prompt: Enter URL
+  #    private: no
  # vars_files:
  # - example-vars.yml
   tasks:
@@ -27,3 +27,9 @@
     - name: print date
       debug:
         msg: Date = {{ out.stdout }}
+    - name: set a fact
+      set_fact:
+      Date: "{{out.std.out}}"
+    - name: print Date
+      debug:
+        msg: Date ={{Date}}
