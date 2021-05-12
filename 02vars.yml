@@ -10,5 +10,5 @@
     - name: Print URL
       debug:
         msg: URL = {{ URL }}
-       vars:
+      vars:
          URL: task.exmple.com
