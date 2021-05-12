@@ -24,12 +24,15 @@
     - name: Gather date
       shell: date +%F
       register: out
+
     - name: print date
       debug:
         msg: Date = {{ out.stdout }}
+
     - name: set a fact
       set_fact:
       Date: "{{out.std.out}}"
+
     - name: print Date
       debug:
         msg: Date ={{Date}}
