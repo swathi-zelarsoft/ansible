@@ -18,3 +18,12 @@
         msg: URL = {{ URL }}
       vars:
          URL: task.exmple.com
+- name: Demo on vars
+  hosts: all
+  tasks:
+    - name: Gather date
+      shell: date +%F
+      register: out
+    - name: print date
+      debug:
+        msg: Date = {{ out }}
