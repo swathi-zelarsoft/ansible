@@ -3,7 +3,7 @@
   vars:
    URL: play.example.com
    Project: example
-  vars_file:
+  vars_files:
    - example-vars.yml
   tasks:
     - name: Print URL
