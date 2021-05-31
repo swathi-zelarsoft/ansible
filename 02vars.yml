@@ -36,3 +36,11 @@
     - name: print Date
       debug:
         msg: Date ={{Date}}
+
+    # Variable Precedence
+    # 1.command line vars with -e
+    # 2.Tasks
+    # 3.vars_files
+    # 4.vars_prompt
+    # 5.vars
+    #6. inventory vars
