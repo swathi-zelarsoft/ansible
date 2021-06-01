@@ -1,0 +1,28 @@
+- name: Setting up todo task
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install nginx
+      apt:
+       - name: nginx
+         update_cache: yes
+    - name: reload service httpd, in all cases
+      systemd:
+       - name: nginx
+         state: present
+         enabled: yes
+    - name: Install npm
+      apt:
+       - name: npm
+         state: present
+    - name: Download frontend component
+      get_url:
+        url: http://172.78.82:8081/repository/frontend/frontend-{{APP_VERSION}}.zip
+        dest: /tmp/frontend.zip
+        username: admin
+        password: admin123
+    - name: Unarchive a file that is already on the remote machine
+      unarchive:
+        src: /tmp/frontend.zip
+        dest: /var/www/html
+        remote_src: yes

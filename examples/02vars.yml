@@ -44,3 +44,9 @@
     # 4.vars_prompt
     # 5.vars
     #6. inventory vars
+- name: Print some facts
+  hosts: all
+  tasks:
+    - name: Print facts
+      debug:
+        msg: Hostname = {{ ansible_hostname }}
