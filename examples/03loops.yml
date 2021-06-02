@@ -35,7 +35,7 @@
         - banana
         - pear
       loop_control:
-       extended: no
+       extended: yes
     - name: Create servers
       debug:
        msg: "{{ item.network }}"
