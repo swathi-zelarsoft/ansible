@@ -17,7 +17,7 @@
          state: present
     - name: Download frontend component
       get_url:
-        url: http://172.78.82:8081/repository/frontend/frontend-{{APP_VERSION}}.zip
+        url: http://192.168.0.69:8081/repository/frontend/frontend-{{APP_VERSION}}.zip
         dest: /tmp/frontend.zip
         username: admin
         password: admin123
