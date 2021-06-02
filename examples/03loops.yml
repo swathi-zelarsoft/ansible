@@ -8,8 +8,6 @@
         - banana
         - apple
         - orange
-      loop_control:
-        label: "{{ item }}"
     - name: Count our fruit
       debug:
        msg: "{{ item }} with index {{ my_idx }}"
@@ -37,7 +35,7 @@
         - banana
         - pear
       loop_control:
-       extended: yes
+       extended: no
     - name: Create servers
       debug:
        msg: "{{ item.network }}"
