@@ -10,8 +10,8 @@
       debug:
         msg: "{{ URL | urlsplit }}"
     - name: Print last column
-     debug:
-       msg: "{{ URL.split('/')}}"
+      debug:
+        msg: "{{ URL.split('/')}}"
     - name: Print last column
       debug:
         msg: "{{ URL.split('/') | last }}"
