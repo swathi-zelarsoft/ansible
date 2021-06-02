@@ -7,8 +7,8 @@
  #   - name: URL
  #     prompt: Enter URL
  #     private: no
-  vars_files:
-  - example-vars.yml
+ # vars_files:
+ # - example-vars.yml
   tasks:
     - name: Print URL
       debug:
