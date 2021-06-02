@@ -19,7 +19,7 @@
        index_var: my_idx
     - name: Loop variable
       debug:
-       msg: "{{ myvar }}"
+       msg: "Fruits = {{ myvar }}"
       loop:
          - apple
          - banana
