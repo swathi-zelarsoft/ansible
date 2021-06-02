@@ -1,8 +1,8 @@
 - name: Demo on variables
   hosts: all
- # vars:
- #  URL: play.example.com
- #  Project: example
+  vars:
+   URL: play.example.com
+   Project: example
  # vars_prompt:
  #   - name: URL
  #     prompt: Enter URL
@@ -27,7 +27,7 @@
 
     - name: print date
       debug:
-        msg: Date = {{ out.stdout }}
+        msg: Date = {{ out }}
 
     - name: set a fact
       set_fact:
