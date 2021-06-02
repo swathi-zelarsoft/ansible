@@ -8,8 +8,8 @@
         - banana
         - apple
         - orange
-    loop_control:
-      label: "{{ item }}"
+      loop_control:
+        label: "{{ item }}"
     - name: Count our fruit
       debug:
        msg: "{{ item }} with index {{ my_idx }}"
