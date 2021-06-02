@@ -3,12 +3,12 @@
  # vars:
  #  URL: play.example.com
  #  Project: example
-  vars_prompt:
-    - name: URL
-      prompt: Enter URL
-      private: no
- # vars_files:
- # - example-vars.yml
+ # vars_prompt:
+ #   - name: URL
+ #     prompt: Enter URL
+ #     private: no
+  vars_files:
+  - example-vars.yml
   tasks:
     - name: Print URL
       debug:
