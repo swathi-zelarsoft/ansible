@@ -29,7 +29,7 @@
     - name: print first value
              #when: ansible_loop.first
       debug:
-        msg: "{{ ansible_loop.first }}"
+        msg: "{{ ansible_loop.last }}"
       loop:
         - apple
         - banana
