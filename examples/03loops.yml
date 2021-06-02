@@ -53,4 +53,4 @@
            nic01: 100Gb
            nic02: 10Gb
       loop_control:
-        label: "{{ item.name }}
+        label: "{{ item.name }}"
