@@ -3,8 +3,8 @@
   vars:
     URL: https://github.com/zelar-soft-roboshop/frontend/archive/main.zip
     tag_data:
-      Environment: develop
-      Application: payment
+      Environ: develop
+      Applica: payme
   tasks:
     - name: Print filename of a url
       debug:
@@ -14,7 +14,7 @@
         msg: "{{ URL.split('/')}}"
     - name: Print last column
       debug:
-        msg: "{{ URL.split('/') | last }}"
+        msg: "{{ URL.split('/') | first }}"
 
     - name: Print tag data
       debug:
