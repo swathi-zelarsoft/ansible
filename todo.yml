@@ -14,7 +14,7 @@
     - name: Install npm
       apt:
         name: npm
-        state: present
+        state: started
     - name: Download frontend component
       get_url:
         url: http://192.168.0.69:8081/repository/frontend/frontend-{{APP_VERSION}}.zip
