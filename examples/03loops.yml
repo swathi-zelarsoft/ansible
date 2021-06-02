@@ -18,11 +18,11 @@
       loop_control:
        index_var: my_idx
     - name: Loop variable
-        debug:
-          msg: "{{ myvar }}"
-        loop:
-          - apple
-          - banana
-          - pear
-        loop_control:
-          loop_var: myvar
+      debug:
+       msg: "{{ myvar }}"
+      loop:
+         - apple
+         - banana
+         - pear
+      loop_control:
+       loop_var: myvar
