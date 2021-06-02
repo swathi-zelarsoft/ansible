@@ -38,7 +38,7 @@
        extended: yes
     - name: Create servers
       debug:
-       msg: "{{ item.disks }}"
+       msg: "{{ item.network }}"
       loop:
        - name: server1
          disks: 3gb
@@ -53,4 +53,4 @@
            nic01: 100Gb
            nic02: 10Gb
       loop_control:
-        label: "{{ item.disks }}"
+        label: "{{ item.network }}"
