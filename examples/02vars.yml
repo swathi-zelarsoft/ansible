@@ -5,7 +5,7 @@
  #  Project: example
   vars_prompt:
     - name: URL
-     prompt: Enter URL
+      prompt: Enter URL
       private: no
  # vars_files:
  # - example-vars.yml
