@@ -11,7 +11,7 @@
         msg: "{{ URL | urlsplit }}"
     - name: Print last column
       debug:
-        msg: "{{ URL.split('/') | last }}"
+        msg: "{{ URL.split('/') }}"
 
     - name: Print tag data
       debug:
