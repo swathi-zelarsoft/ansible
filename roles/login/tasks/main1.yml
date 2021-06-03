@@ -1,0 +1,9 @@
+- name: Install go-lang
+  apt:
+    name: go-lang
+    state: present
+    update_cache: yes
+- name: Import NodeJS Common role
+  include_role:
+    name: common
+    tasks_from: main
