@@ -7,7 +7,6 @@
   apt:
     name: maven
     state: present
-    update_cache: yes
 
 - name: Download Artifacts from Nexus
   get_url:

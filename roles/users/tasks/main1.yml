@@ -1,0 +1,13 @@
+- name: Install OpenJDK Java
+  apt:
+    name: openjdk-8-jdk
+      state: present
+    update_cache: yes
+- name: Install Maven
+  apt:
+    name: maven
+    state: present
+- name: Import  Common role
+  include_role:
+    name: common
+    tasks_from: main

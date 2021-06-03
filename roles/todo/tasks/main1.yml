@@ -1,9 +1,9 @@
-- name: Install go-lang
+- name: Install npm
   apt:
-    name: go-lang
+    name: npm
     state: present
     update_cache: yes
-- name: Import Common role
+- name: Import  Common role
   include_role:
     name: common
     tasks_from: main
