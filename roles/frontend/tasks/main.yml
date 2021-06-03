@@ -7,22 +7,42 @@
       apt:
         name: npm
         state: present
+    - name: Clean the old artifacts
+      file:
+        path: /var/www/html/{{COMPONENT}}
+        state: absent
+    - name: Create the artifact path
+      file:
+        path: /var/www/html/{{COMPONENT}}
+        state: directory
     - name: Download frontend component
       get_url:
-        url: http://192.168.0.69:8081/repository/frontend/frontend-{{APP_VERSION}}.zip
+        url: http://192.168.0.69:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
         dest: /tmp/frontend.zip
         username: admin
         password: admin123
     - name: Unarchive a file that is already on the remote machine
       unarchive:
         src: /tmp/frontend.zip
-        dest: /var/www/html
+        dest: /var/www/html/{{COMPONENT}}
         remote_src: yes
-    - name: Copy dist file to present location
-      copy:
-        src: /var/www/html/dist
-        dest: /var/www/html
-        remote_src: yes
+    - name: Update sites-enabled default file
+      ansible.builtin.replace:
+        path: /etc/nginx/sites-enabld/default
+        regexp: '/var/www/html'
+        replace: '/var/www/html/frontend/dist'
+    - name: Copy {{COMPONENT}} Service file
+      template:
+        src: "{{COMPONENT}}.service"
+        dest: /etc/systemd/system/{{COMPONENT}}.service
+
+    - name: Start {{COMPONENT}} Service
+      systemd:
+        name: "{{COMPONENT}}"
+        daemon_reload: yes
+        state: started
+        enabled: yes
+
     - name: start service nginx
       systemd:
         name: nginx
