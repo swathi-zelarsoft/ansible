@@ -1,34 +1,27 @@
-- name: Setting up todo task
+- name: Setup roboshop project
   hosts: all
   become: yes
-  tasks:
-    - name: Install nginx
-      apt:
-        name: nginx
-        update_cache: yes
+  ## THis become can also be used at task level
+  roles:
+    - role: frontend
+      tags: frontend
+      when: COMPONENT == "frontend"
 
-    - name: Install npm
-      apt:
-        name: npm
-        state: present
-    - name: Download frontend component
-      get_url:
-        url: http://192.168.0.69:8081/repository/frontend/frontend-{{APP_VERSION}}.zip
-        dest: /tmp/frontend.zip
-        username: admin
-        password: admin123
-    - name: Unarchive a file that is already on the remote machine
-      unarchive:
-        src: /tmp/frontend.zip
-        dest: /var/www/html
-        remote_src: yes
-    - name: Copy dist file to present location
-      copy:
-        src: /var/www/html/dist
-        dest: /var/www/html
-        remote_src: yes
-    - name: start service nginx
-      systemd:
-        name: nginx
-        state: started
-        enabled: yes
+    - role: login
+      tags: login
+      when: COMPONENT == "login"
+
+    - role: users
+      tags: users
+      when: COMPONENT == "users"
+
+    - role: todo
+      tags: todo
+      when: COMPONENT == "todo"
+
+    - role: redis
+      tags: redis
+      when: COMPONENT == "redis"
+
+
+
