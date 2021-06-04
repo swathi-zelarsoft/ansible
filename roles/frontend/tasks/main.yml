@@ -29,8 +29,10 @@
     - name: Update sites-enabled default file
       ansible.builtin.replace:
         path: /etc/nginx/sites-enabled/default
-        regexp: '/var/www/html'
-        replace: '/var/www/html/frontend/dist'
+        after: '/var/www/html'
+        regexp: ''
+        replace: '/frontend/dist'
+
     - name: Copy {{COMPONENT}} Service file
       template:
         src: "{{COMPONENT}}.service"
