@@ -23,7 +23,7 @@
         password: admin123
     - name: Unarchive a file that is already on the remote machine
       unarchive:
-        src: /tmp/frontend.zip
+        src: /tmp/{{COMPONENT}}-{{APP_VERSION}}.zip
         dest: /var/www/html/{{COMPONENT}}
         remote_src: yes
     - name: Update sites-enabled default file
