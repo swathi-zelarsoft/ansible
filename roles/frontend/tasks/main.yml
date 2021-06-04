@@ -18,13 +18,13 @@
     - name: Download frontend component
       get_url:
         url: http://192.168.0.105:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
-        dest: /tmp
+        dest: /tmp/frontend.zip
         username: admin
         password: admin123
     - name: Unarchive a file that is already on the remote machine
       unarchive:
-        src: /tmp/{{COMPONENT}}-{{APP_VERSION}}.zip
-        dest: /var/www/html/{{COMPONENT}}
+        src: /tmp/frontend.zip
+        dest: /var/www/html/frontend
         remote_src: yes
     - name: Update sites-enabled default file
       ansible.builtin.replace:
@@ -35,6 +35,7 @@
       template:
         src: "{{COMPONENT}}.service"
         dest: /etc/systemd/system/{{COMPONENT}}.service
+      notify: Restart Nginx
 
     - name: Start {{COMPONENT}} Service
       systemd:
@@ -43,8 +44,8 @@
         state: started
         enabled: yes
 
-    - name: start service nginx
+    - name: Start Nginx
       systemd:
+        state: started
         name: nginx
-        state: restarted
         enabled: yes
