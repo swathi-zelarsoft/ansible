@@ -35,8 +35,11 @@
       template:
         src: "{{COMPONENT}}.service"
         dest: /etc/systemd/system/{{COMPONENT}}.service
-      notify: Restart Nginx
-
+    - name: Start Nginx
+      systemd:
+          state: started
+          name: nginx
+          enabled: yes
     - name: Start {{COMPONENT}} Service
       systemd:
         name: "{{COMPONENT}}"
@@ -44,8 +47,3 @@
         state: started
         enabled: yes
 
-    - name: Start Nginx
-      systemd:
-        state: started
-        name: nginx
-        enabled: yes
