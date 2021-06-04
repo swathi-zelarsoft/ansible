@@ -28,7 +28,7 @@
         remote_src: yes
     - name: Update sites-enabled default file
       ansible.builtin.replace:
-        path: /etc/nginx/sites-enabld/default
+        path: /etc/nginx/sites-enabled/default
         regexp: '/var/www/html'
         replace: '/var/www/html/frontend/dist'
     - name: Copy {{COMPONENT}} Service file
