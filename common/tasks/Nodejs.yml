@@ -1,0 +1,11 @@
+- name: Install npm
+  apt:
+    name: npm
+    state: present
+    update_cache: yes
+
+- name: Download Artifacts from Nexus
+  include_tasks: Download-artifacts-nexus.yml
+
+- name: Setup SystemD Service
+  include_tasks: systemd-setup.yml

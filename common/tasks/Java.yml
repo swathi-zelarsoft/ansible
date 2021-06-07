@@ -1,0 +1,14 @@
+- name: Install OpenJDK Java
+  apt:
+    name: openjdk-8-jdk
+      state: present
+    update_cache: yes
+- name: Install Maven
+  apt:
+    name: maven
+    state: present
+- name: Download Artifacts from Nexus
+  include_tasks: Download-artifacts-nexus.yml
+
+- name: Setup SystemD Service
+  include_tasks: systemd-setup.yml

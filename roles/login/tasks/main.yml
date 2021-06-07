@@ -1,38 +1,4 @@
-- name: Install go-lang
-  apt:
-    name: golang-go
-    state: present
-    update_cache: yes
-
-- name: Download Artifacts from Nexus
-  get_url:
-    url: http://192.168.0.105:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
-    dest: /tmp/{{COMPONENT}}.zip
-    username: admin
-    password: admin123
-- name: Clean the old artifacts
-  file:
-     path: /root/{{COMPONENT}}
-     state: absent
-- name: Create the artifact path
-  file:
-    path: /root/{{COMPONENT}}
-    state: directory
-
-- name: Extract the {{COMPONENT}} Content
-  unarchive:
-      src: /tmp/{{COMPONENT}}.zip
-      dest: /root/{{COMPONENT}}
-      remote_src: yes
-
-- name: Copy {{COMPONENT}} Service file
-  template:
-    src: "{{COMPONENT}}.service"
-    dest: /etc/systemd/system/{{COMPONENT}}.service
-
-- name: Start {{COMPONENT}} Service
-  systemd:
-    name: "{{COMPONENT}}"
-    daemon_reload: yes
-    state: started
-    enabled: yes
+- name: Import  Common role
+  include_role:
+    name: common
+    tasks_from: go-lang

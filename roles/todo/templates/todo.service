@@ -2,7 +2,7 @@
 Description=Todo service
 
 [Service]
-Environment=REDIS_HOST=DNSREDIS
+Environment=REDIS_HOST=redis.zsdevtraining.online
 ExecStart=/bin/node /root/todo/server.js
 SyslogIdentifier=todo
 Restart=on-failure
