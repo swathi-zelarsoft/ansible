@@ -1,9 +1,4 @@
-- name: Install npm
-  apt:
-    name: npm
-    state: present
-    update_cache: yes
 - name: Import  Common role
   include_role:
     name: common
-    tasks_from: main
+    tasks_from: Nodejs

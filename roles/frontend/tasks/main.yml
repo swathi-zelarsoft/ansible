@@ -31,16 +31,17 @@
         path: /etc/nginx/sites-enabled/default
         regexp: '/var/www/html'
         replace: '/var/www/html/frontend/dist'
+    - name: Start Nginx
+      systemd:
+             state: started
+             name: nginx
+             enabled: yes
 
     - name: Copy {{COMPONENT}} Service file
       template:
         src: "{{COMPONENT}}.service"
         dest: /etc/systemd/system/{{COMPONENT}}.service
-    - name: Start Nginx
-      systemd:
-          state: started
-          name: nginx
-          enabled: yes
+
     - name: Start {{COMPONENT}} Service
       systemd:
         name: "{{COMPONENT}}"
