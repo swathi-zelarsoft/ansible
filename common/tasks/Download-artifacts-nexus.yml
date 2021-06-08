@@ -15,7 +15,7 @@
 
 - name: Extract the {{COMPONENT}} Content
   unarchive:
-    src: /tmp/{{COMPONENT}}.zip
+    src: /tmp
     dest: /root/{{COMPONENT}}
     remote_src: yes
 
