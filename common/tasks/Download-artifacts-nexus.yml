@@ -1,7 +1,7 @@
 - name: Download Artifacts from Nexus
   get_url:
     url: http://192.168.0.15:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
-    dest: /tmp/{{COMPONENT}}.zip
+    dest: /tmp
     username: admin
     password: admin123
 - name: Clean the old artifacts
@@ -15,7 +15,7 @@
 
 - name: Extract the {{COMPONENT}} Content
   unarchive:
-    src: /tmp
+    src: /tmp/{{COMPONENT}}-{{APP_VERSION}}.zip
     dest: /root/{{COMPONENT}}
     remote_src: yes
 
