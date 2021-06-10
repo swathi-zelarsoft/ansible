@@ -33,7 +33,7 @@
       loop:
         - /etc/nginx/sites-enabled/default
         - /etc/nginx/sites-available/default
-        - /var/www/html
+        - /var/www/html/index.nginx-debian.html
     - name: Update RoboShop Config file
       template:
             src: todo.conf
