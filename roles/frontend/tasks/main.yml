@@ -3,6 +3,11 @@
         name: nginx
         update_cache: yes
 
+    - name: Start Nginx
+      systemd:
+          state: started
+          name: nginx
+          enabled: yes
     - name: Install npm
       apt:
         name: npm
@@ -38,11 +43,12 @@
       template:
             src: todo.conf
             dest: /etc/nginx/sites-enabled/todo.conf
+
     - name: Start Nginx
       systemd:
-             state: started
-             name: nginx
-             enabled: yes
+          state: started
+          name: nginx
+          enabled: yes
 
     - name: Copy {{COMPONENT}} Service file
       template:
