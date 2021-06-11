@@ -26,7 +26,7 @@
         dest: /tmp
     - name: Unarchive a file that is already on the remote machine
       unarchive:
-        src: /tmp/frontend-0.0.3.zip
+        src: /tmp/frontend-main
         dest: /var/www/html/frontend
         remote_src: yes
     - name: Delete the default content
