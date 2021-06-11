@@ -22,10 +22,8 @@
         state: directory
     - name: Download frontend component
       get_url:
-        url: http://192.168.0.15:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
+        url: https://github.com/swathi-zelarsoft/frontend/archive/main.zip
         dest: /tmp
-        username: admin
-        password: admin123
     - name: Unarchive a file that is already on the remote machine
       unarchive:
         src: /tmp/frontend-0.0.3.zip
