@@ -2,12 +2,6 @@
       apt:
         name: nginx
         update_cache: yes
-
-    - name: Start Nginx
-      systemd:
-          state: started
-          name: nginx
-          enabled: yes
     - name: Install npm
       apt:
         name: npm
@@ -22,11 +16,13 @@
         state: directory
     - name: Download frontend component
       get_url:
-        url: https://github.com/swathi-zelarsoft/frontend/archive/main.zip
+        url: http://192.168.0.15:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
         dest: /tmp
+        username: admin
+        password: admin123
     - name: Unarchive a file that is already on the remote machine
       unarchive:
-        src: /tmp/frontend-main.zip
+        src: /tmp/frontend-0.0.3.zip
         dest: /var/www/html/frontend
         remote_src: yes
     - name: Delete the default content
