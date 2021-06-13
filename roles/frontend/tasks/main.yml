@@ -1,58 +1,58 @@
-    - name: Install nginx
-      apt:
-         name: nginx
-         update_cache: yes
-         state: present
-    - name: Install npm
-      apt:
-        name: npm
-        state: present
-    - name: Clean the old artifacts
-      file:
-        path: /var/www/html/{{COMPONENT}}
-        state: absent
-    - name: Create the artifact path
-      file:
-        path: /var/www/html/{{COMPONENT}}
-        state: directory
-    - name: Download frontend component
-      get_url:
+- name: Install nginx
+  apt:
+    name: nginx
+    update_cache: yes
+    state: present
+- name: Install npm
+  apt:
+    name: npm
+    state: present
+- name: Clean the old artifacts
+  file:
+     path: /var/www/html/{{COMPONENT}}
+     state: absent
+- name: Create the artifact path
+  file:
+    path: /var/www/html/{{COMPONENT}}
+    state: directory
+- name: Download frontend component
+  get_url:
         url: http://192.168.0.15:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
         dest: /tmp
         username: admin
         password: admin123
-    - name: Unarchive a file that is already on the remote machine
-      unarchive:
+- name: Unarchive a file that is already on the remote machine
+  unarchive:
         src: /tmp/frontend-0.0.3.zip
         dest: /var/www/html/frontend
         remote_src: yes
-    - name: Delete the default content
-      file:
-        path: "{{ item }}"
-        state: absent
-      loop:
+- name: Delete the default content
+  file:
+      path: "{{ item }}"
+      state: absent
+  loop:
         - /etc/nginx/sites-enabled/default
         - /etc/nginx/sites-available/default
         - /var/www/html/index.nginx-debian.html
-    - name: Update RoboShop Config file
-      template:
+- name: Update RoboShop Config file
+  template:
           src: todo.conf
           dest: /etc/nginx/sites-enabled/todo.conf
       notify: Restart Nginx
 
-    - name: Start Nginx
-      systemd:
+- name: Start Nginx
+  systemd:
           state: started
           name: nginx
           enabled: yes
 
-    - name: Copy {{COMPONENT}} Service file
-      template:
-        src: "{{COMPONENT}}.service"
-        dest: /etc/systemd/system/{{COMPONENT}}.service
+- name: Copy {{COMPONENT}} Service file
+  template:
+     src: "{{COMPONENT}}.service"
+     dest: /etc/systemd/system/{{COMPONENT}}.service
 
-    - name: Start {{COMPONENT}} Service
-      systemd:
+- name: Start {{COMPONENT}} Service
+  systemd:
         name: "{{COMPONENT}}"
         daemon_reload: yes
         state: started
