@@ -1,0 +1,8 @@
+- name: Creating a vault to a word
+  vars:
+   password: ABCD123
+  hosts: all
+  tasks:
+    - name: Print the vault message
+      debug:
+        msg: "password={{password}}"
