@@ -35,9 +35,9 @@
         - /var/www/html/index.nginx-debian.html
     - name: Update RoboShop Config file
       template:
-            src: todo.conf
-            dest: /etc/nginx/sites-enabled/todo.conf
-          notify: Restart Nginx
+          src: todo.conf
+          dest: /etc/nginx/sites-enabled/todo.conf
+      notify: Restart Nginx
 
     - name: Start Nginx
       systemd:
