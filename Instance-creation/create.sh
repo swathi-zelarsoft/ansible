@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
-LID= lt-0141adcfff5254879
-LVER=1
+LID=lt-0141adcfff5254879
+LVER=2
 #COMPONENT=$1
 
 if [ -z "$1" ]; then
