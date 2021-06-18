@@ -13,3 +13,10 @@
     - name: debug
       debug:
        msg: "{{FILENAME}} , {{DIRNAME}}"
+    - name: Download Node Exporter
+      unarchive:
+        src: "{{node_exporter_url.stdout}}"
+        dest: /opt
+        remote_src: yes
+    - name: Rename to Standard Name
+      shell: mv /opt/{{DIRNAME}} /opt/node_exporter
