@@ -6,4 +6,4 @@
       register: node_exporter_url
     - name: debug
       debug:
-        msg:  {{node_exporter_url}}
+        msg: "{{node_exporter_url}}"
