@@ -6,7 +6,7 @@
       register: node_exporter_url
 
     - name: Grab filename and Directory Name from the URL
-        set_fact:
+      set_fact:
           FILENAME: "{{node_exporter_url.stdout.split('/') | last}}"
     - name: debug
         debug:
