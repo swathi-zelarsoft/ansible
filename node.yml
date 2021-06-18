@@ -1,0 +1,9 @@
+- name: Demo on nodes
+  hosts: all
+  tasks:
+    - name: Find the URL of Node_Exporter Latest Version URL
+      shell: curl -L -s https://prometheus.io/download/  | grep tar | grep node_exporter | grep linux-amd64  | sed -e "s|>| |g" -e 's|<| |g' -e 's|"| |g' |xargs -n1 | grep ^http
+     register: node_exporter_url
+    - name: debug
+      debug:
+        msg:  {{node_exporter_url}}
