@@ -30,7 +30,7 @@ Instance_Create() {
 }
 
 if [ "$1" == "all" ]; then
-  for instance in frontend login todo ; do
+  for instance in frontend login todo users ; do
     Instance_Create $instance-dev
   done
 else
