@@ -31,6 +31,7 @@
     path: /etc/nginx/sites-enabled/default
     regexp: '/var/www/html'
     replace: '/var/www/html/frontend/dist'
+  notify: Restart Nginx
 - name: Start Nginx
   systemd:
       state: started
