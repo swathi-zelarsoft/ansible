@@ -50,6 +50,6 @@
       replace: ''
 - name: To start npm
   shell: npm start
-    args:
-      chdir: /var/www/html/frontend
+  args:
+     chdir: /var/www/html/frontend
 
