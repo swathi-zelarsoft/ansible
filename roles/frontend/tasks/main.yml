@@ -40,7 +40,16 @@
 
 - name: Change the Login and todo Ips
   ansible.builtin.replace:
-    path: /etc/nginx/sites-enabled/default
-    regexp: '/var/www/html'
-    replace: '/var/www/html/fron
+    path: /var/www/html/frontend/config/index.js
+    regexp: '127.0.0.1'
+    replace: ''
+- name: Change the Login and todo Ips
+  ansible.builtin.replace:
+      path: /var/www/html/frontend/config/index.js
+      regexp: '127.0.0.2'
+      replace: ''
+- name: To start npm
+  shell: npm start
+    args:
+      chdir: /var/www/html/frontend
 
