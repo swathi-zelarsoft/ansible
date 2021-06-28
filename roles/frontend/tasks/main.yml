@@ -42,12 +42,12 @@
   ansible.builtin.replace:
     path: /var/www/html/frontend/config/index.js
     regexp: '127.0.0.1'
-    replace: '192.168.0.59'
+    replace: '192.168.0.31'
 - name: Change the Login and todo Ips
   ansible.builtin.replace:
       path: /var/www/html/frontend/config/index.js
       regexp: '127.0.0.2'
-      replace: '192.168.0.104'
+      replace: '192.168.0.65'
 - name: To start npm
   shell: npm start
   args:
