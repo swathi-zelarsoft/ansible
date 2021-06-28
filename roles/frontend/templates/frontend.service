@@ -3,8 +3,8 @@ Description=frontend service
 
 [Service]
 Type=simple
-Environment=AUTH_API_ADDRESS=http://172.31.223.33:8080
-Environment=TODOS_API_ADDRESS=http://172.31.133.53:8080
+Environment=AUTH_API_ADDRESS=http://192.168.0.31:8080
+Environment=TODOS_API_ADDRESS=http://192.168.0.65:8080
 Restart=on-failure
 WorkingDirectory=/var/www/html/frontend
 ExecStart=npm start
