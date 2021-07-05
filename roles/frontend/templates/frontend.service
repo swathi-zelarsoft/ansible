@@ -6,7 +6,7 @@ Type=simple
 Environment=AUTH_API_ADDRESS=http://192.168.0.61:8080
 Environment=TODOS_API_ADDRESS=http://192.168.0.86:8080
 Restart=on-failure
-WorkingDirectory=/var/www/html/frontend
+WorkingDirectory=/root/frontend
 ExecStart=npm start
 Restart=on-failure
 
