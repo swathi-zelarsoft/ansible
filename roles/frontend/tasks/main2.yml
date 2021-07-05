@@ -1,8 +1,8 @@
 - name: Install nginx
   apt:
     name: nginx
-    state: present
     update_cache: yes
+    state: present
 - name: Delete the default content
   file:
     path: "{{ item }}"
