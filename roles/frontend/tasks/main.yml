@@ -2,7 +2,6 @@
   apt:
     name: nginx
     update_cache: yes
-    state: present
 - name: Delete the default content
   file:
     path: "{{ item }}"
