@@ -1,0 +1,29 @@
+- name: Install npm
+  apt:
+    name: npm
+    state: present
+    update_cache: yes
+- name: Download Artifacts from Nexus
+  get_url:
+    url: http://192.168.0.105:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip
+    dest: /tmp
+    username: admin
+    password: admin123
+- name: Clean the old artifacts
+  file:
+    path: /root/{{COMPONENT}}
+    state: absent
+- name: Create the artifact path
+  file:
+    path: /root/{{COMPONENT}}
+    state: directory
+
+- name: Extract the {{COMPONENT}} Content
+  unarchive:
+    src: /tmp/{{COMPONENT}}-{{APP_VERSION}}.zip
+    dest: /root/{{COMPONENT}}
+    remote_src: yes
+- name: start npm
+  shell: npm start
+  args:
+    chdir: frontend
