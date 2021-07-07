@@ -2,3 +2,7 @@
   include_role:
     name: common
     tasks_from: Java
+- name: Install Node Exporter Prometheus Monitoring
+  include_role:
+    name: common
+    tasks_from: node_exporter
