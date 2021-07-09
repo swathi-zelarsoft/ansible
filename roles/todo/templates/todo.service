@@ -2,7 +2,7 @@
 Description=Todo service
 
 [Service]
-Environment=REDIS_HOST=192.168.0.13
+Environment=REDIS_HOST=192.168.0.118
 ExecStart=/bin/node /root/todo/server.js
 SyslogIdentifier=todo
 Restart=on-failure
