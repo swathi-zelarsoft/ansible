@@ -14,6 +14,9 @@ filebeat.inputs:
   multiline.negate: true
   multiline.match: after
 {% endif %}
+{% if IS_NODEJS %}
+ include_lines: ^[Error]
+{% endif %}
 {% endfor %}
 {% if IS_STRUCTURED %}
 output.elasticsearch:
