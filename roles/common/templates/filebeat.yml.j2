@@ -15,7 +15,7 @@ filebeat.inputs:
   multiline.match: after
 {% endif %}
 {% if IS_NODEJS %}
- include_lines: ^[Error]
+ include_lines: ['^Error', '^todo']
 {% endif %}
 {% endfor %}
 {% if IS_STRUCTURED %}
